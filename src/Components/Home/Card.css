@@ -1,0 +1,11 @@
+
+.delete{
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    margin: 10px;
+    color: red;
+    font-size: 2rem;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.192);
+}

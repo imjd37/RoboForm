@@ -1,0 +1,53 @@
+.SignInArea{
+    border: 10px solid rgba(0, 0, 0, 0.418);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.226);
+    width: 600px;
+    font-size: 2rem;
+    position: relative;
+    left: 50%;
+    margin-top: 60px;
+    transform: translate(-50%,0);
+    border-radius: 40px;
+}
+
+.SignInArea p{
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.SignIn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.SignIn div p{
+    font-size: 1rem;
+    margin: 0;
+    text-align: center;
+    color: red;
+    
+}
+.SignIn input{
+    height: 40px;
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 30px;
+    font-size: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.425);
+    color: white;
+}
+.SignIn button{
+    height: 40px;
+    width: 100px;
+    margin-top: 20px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    background-color: rgba(62, 145, 145, 0.274);
+    cursor: pointer;
+}
