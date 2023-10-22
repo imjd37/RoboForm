@@ -1,7 +1,9 @@
 import React from "react";
 import "./Card.css";
 
+
 function Card({ name, email, id }) {
+
 
 
   const onDeleteRobo = () => {
@@ -19,10 +21,9 @@ function Card({ name, email, id }) {
       .then((res) => res.json())
       .then((data) => {
         if (data === 1) {
-          alert("your data delete successfully");
-          window.location.reload();
+          alert("your data delete successfully plz reload page");
         } else {
-          alert("This email is not registered");
+          alert("This email is not registered plz reload page");
         }
       });
   };
