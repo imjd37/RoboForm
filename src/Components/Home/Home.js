@@ -1,44 +1,47 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, useContext} from "react";
 import CardList from "./CardList";
 import SearchBox from "./SearchBox";
 import Scroll from "./Scroll";
+import { UserContext } from "../../App";
 
-class Home extends Component {
-  constructor() {
-    super();
-    this.state = {
-      robots: [],
-      searchfield: "",
-    };
-  }
 
-  componentDidMount() {
+
+// export UserContext = createContext;
+
+function Home() {
+
+  const {state} = useContext(UserContext)
+
+  const [robots, setRobots] = useState([]);
+  const [searchfield, setSearchfield] = useState("");
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
     fetch("http://localhost:2000/show")
       .then((res) => res.json())
       .then((users) => {
-        this.setState({ robots: users });
+        setRobots(users);
       });
-  }
+      console.log(state)
+  }, [state]);
 
-  onSearchChange = (event) => {
-    this.setState({ searchfield: event.target.value });
+  const onSearchChange = (event) => {
+    setSearchfield(event.target.value);
   };
-  render() {
-    const filterRobots = this.state.robots.filter((robot) => {
-      return robot.name
-        .toLowerCase()
-        .includes(this.state.searchfield.toLowerCase());
-    });
-    return (
-      <div className="tc">
-        <h1>RoboFriend</h1>
-        <SearchBox searchChange={this.onSearchChange} />
-        <Scroll>
-          <CardList robots={filterRobots} />
-        </Scroll>
-      </div>
-    );
-  }
+  const filterRobots = robots.filter((robot) => {
+    return robot.name.toLowerCase().includes(searchfield.toLowerCase());
+  });
+
+  return (
+    <div className="tc">
+      <h1>RoboFriend</h1>
+      <button onClick={()=>setCount(count + 1)}>Click Me!</button>
+      <SearchBox searchChange={onSearchChange} />
+      <Scroll>
+        <CardList robots={filterRobots} />
+      </Scroll>
+    </div>
+  );
 }
 
 export default Home;

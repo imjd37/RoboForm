@@ -1,9 +1,11 @@
-import React from "react";
+import React,{useContext} from "react";
 import "./Card.css";
+import { UserContext } from "../../App";
 
 
 function Card({ name, email, id }) {
 
+  const { dispatch } = useContext(UserContext);
 
 
   const onDeleteRobo = () => {
@@ -22,6 +24,7 @@ function Card({ name, email, id }) {
       .then((data) => {
         if (data === 1) {
           alert("your data delete successfully plz reload page");
+          dispatch({ type: "DEL", payload: 1 });
         } else {
           alert("This email is not registered plz reload page");
         }
