@@ -1,17 +1,14 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import "./Card.css";
 import { UserContext } from "../../App";
 
-
 function Card({ name, email, id }) {
-
   const { dispatch } = useContext(UserContext);
-
 
   const onDeleteRobo = () => {
     var deleteEmail = {
-        email: email,
-      };
+      email: email,
+    };
 
     fetch("http://localhost:2000/delete", {
       method: "POST",
@@ -24,7 +21,7 @@ function Card({ name, email, id }) {
       .then((data) => {
         if (data === 1) {
           alert("your data delete successfully plz reload page");
-          dispatch({ type: "DEL", payload: 1 });
+          dispatch({ type: "DEL", payload: true });
         } else {
           alert("This email is not registered plz reload page");
         }

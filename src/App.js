@@ -6,16 +6,15 @@ import SignUp from "./Components/SignUp/SignUp";
 import "tachyons";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { createContext, useReducer } from "react";
-import { initialState,reducer } from "./reducer/Usereduser";
+import { initialState, reducer } from "./reducer/Usereduser";
 
 export const UserContext = createContext();
 
 function App() {
-
-  const[state,dispatch] = useReducer(reducer,initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <UserContext.Provider value={{state,dispatch}}>
+    <UserContext.Provider value={{ state, dispatch }}>
       <div className="App">
         <BrowserRouter>
           <Routes>

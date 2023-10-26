@@ -1,20 +1,20 @@
-import React, { useState, useEffect, useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CardList from "./CardList";
 import SearchBox from "./SearchBox";
 import Scroll from "./Scroll";
 import { UserContext } from "../../App";
 
-
-
 // export UserContext = createContext;
 
 function Home() {
-
-  const {state} = useContext(UserContext)
+  const { state, dispatch } = useContext(UserContext);
+  dispatch({ type: "USER", payload: true });
 
   const [robots, setRobots] = useState([]);
   const [searchfield, setSearchfield] = useState("");
   const [count, setCount] = useState(0);
+  console.log(state);
+  // setState(state+1)
 
   useEffect(() => {
     fetch("http://localhost:2000/show")
@@ -22,7 +22,7 @@ function Home() {
       .then((users) => {
         setRobots(users);
       });
-      console.log(state)
+    console.log(state);
   }, [state]);
 
   const onSearchChange = (event) => {
@@ -35,7 +35,7 @@ function Home() {
   return (
     <div className="tc">
       <h1>RoboFriend</h1>
-      <button onClick={()=>setCount(count + 1)}>Click Me!</button>
+      <button onClick={() => setCount(count + 1)}>Click Me!</button>
       <SearchBox searchChange={onSearchChange} />
       <Scroll>
         <CardList robots={filterRobots} />
