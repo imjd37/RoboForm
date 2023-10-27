@@ -21,7 +21,7 @@ function Card({ name, email, id }) {
       .then((data) => {
         if (data === 1) {
           alert("your data delete successfully plz reload page");
-          dispatch({ type: "DEL", payload: true });
+          dispatch({ type: "DEL", payload:1 });
         } else {
           alert("This email is not registered plz reload page");
         }

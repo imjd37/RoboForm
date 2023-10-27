@@ -28,7 +28,6 @@ function SignIn() {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
     fetch("http://localhost:2000/signIn", {
       method: "post",
       headers: { "Content-type": "application/json" },
