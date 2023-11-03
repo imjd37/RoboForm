@@ -3,7 +3,9 @@ import "./SignUp.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { createUser } from "../../reducer/userDetailSlice";
 
 
 function SignUp() {
@@ -13,10 +15,8 @@ function SignUp() {
     password: yup.string().min(4).max(20).required(),
   });
 
-  
-  const navigate = useNavigate();
- 
-
+  // const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -27,25 +27,12 @@ function SignUp() {
   });
    
   const onSubmit = (data) => {
-    fetch("http://localhost:2000/signUp", {
-      method: "post",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data === "INSERT") {
-          alert("Registration successful");
-          navigate("../home");
-        } else if (data.code === "23505") {
-          alert("This email already exist");
-        } else {
-          alert(data);
-        }
-      })
-      .catch((data) => console.log("22", data));
-  };
-
+    console.log(data.email)
+    dispatch(createUser(data))
+      // navigate('/home');
+  
+    
+  }
   return (
     <>
       <div className="register">
