@@ -1,8 +1,7 @@
 import React from "react";
 import Card from "./Card";
 
-function CardList ({ robots }) {
- 
+function CardList({ robots }) {
   return (
     <div>
       {robots.map((user, i) => {
@@ -17,6 +16,6 @@ function CardList ({ robots }) {
       })}
     </div>
   );
-};
+}
 
 export default CardList;
